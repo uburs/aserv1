@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Quiz</title>
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+        .container {
+            display: none; /* Hide all containers by default */
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            min-height: 80vh;
+            width: 100%; /* Full width to prevent overflow */
+            margin: 0 30px;
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        .container.active {
+            display: flex; /* Show only the active container */
+        }
+        .container p {
+            margin: 0;
+            text-align: left;
+        }
+        button {
+            margin-top: 20px;
+            color: tomato;
+            width: 200px;
+            height: 50px;
+            align-self: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .complete-survey-button {
+            width: 250px;
+            height: 60px;
+            font-size: 18px;
+            background-color: #800000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            align-self: center;
+        }
+        h1, h3 {
+            text-align: center;
+            font-weight: bold;
+            color: #800000;
+        }
+        .quiz-container {
+            margin-top: 20px;
+            text-align: left;
+            width: 100%;
+            max-width: 600px;
+        }
+        .quiz-question {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chemistry Quiz</h1>
+    
+    <div id="video-section-1" class="container active">
+        <h1>Chemistry Lecture Video</h1>
+        <div>
+            <figure>
+                <video width="900" height="800" controls>
+                    <source src="images/lecture.mp4" type="video/mp4">
+                </video>
+            </figure>
+        </div>
+        <button onclick="showPage(1)">Next</button>
+    </div>
+    
+    <div id="video-section-2" class="container">
+        <h1>ASR Captions of the Lecture Video Above</h1>
+        <div>
+            <figure>
+                <video width="900" height="800" controls>
+                    <source src="images/lecturetranscript2.mp4" type="video/mp4">
+                </video>
+            </figure>
+        </div>
+        <div class="quiz-container">
+            <div class="quiz-question">
+                <p>1. What is the chemical symbol for water?</p>
+                <label><input type="radio" name="question1" value="H2O"> H<sub>2</sub>O</label><br>
+                <label><input type="radio" name="question1" value="O2"> O<sub>2</sub></label><br>
+                <label><input type="radio" name="question1" value="CO2"> CO<sub>2</sub></label>
+            </div>
+            <div class="quiz-question">
+                <p>2. What is the pH level of pure water?</p>
+                <label><input type="radio" name="question2" value="7"> 7</label><br>
+                <label><input type="radio" name="question2" value="5"> 5</label><br>
+                <label><input type="radio" name="question2" value="9"> 9</label>
+            </div>
+            <button class="complete-survey-button" onclick="submitResponses()">Submit</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Navigation and Submission -->
+    <script>
+        function showPage(pageIndex) {
+            const sections = document.querySelectorAll('.container');
+            sections.forEach((section, index) => {
+                if (index === pageIndex) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        }
+
+        function submitResponses() {
+            const responses = {
+                question1: document.querySelector('input[name="question1"]:checked')?.value,
+                question2: document.querySelector('input[name="question2"]:checked')?.value
+            };
+
+            fetch('submit_responses.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(responses)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert(data.message);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                alert('An error occurred: ' + error.message);
+            });
+        }
+    </script>
+</body>
+</html>
