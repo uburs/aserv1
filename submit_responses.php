@@ -3,7 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $responses = json_decode(file_get_contents('php://input'), true);
 
     // Google Sheets URL (replace with your actual Google Sheets Web App URL)
-    $googleSheetsUrl = 'https://script.google.com/macros/s/AKfycbxmc-O8Jc0jnyYkCEKEEH-hVzCZQt1A8IvJgn3RDirExF2VLB3II0a95PXYJaXOWl2-JA/exec';
+    $googleSheetsUrl = 'https://script.google.com/macros/s/AKfycbxcn5hXn_4XsZFSaeDhZ3Q-zqhht63LiriA5eT8EB9EYilSfpWjqxE62SYX6thiGC1p0A/exec';
 
     // Prepare the data to be sent to Google Sheets
     $postData = json_encode($responses);
