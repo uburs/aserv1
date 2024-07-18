@@ -82,6 +82,7 @@
             <figure>
                 <video width="900" height="800" controls>
                     <source src="images/lecture.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
             </figure>
         </div>
@@ -94,64 +95,9 @@
             <figure>
                 <video width="900" height="800" controls>
                     <source src="images/lecturetranscript2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
             </figure>
         </div>
         <div class="quiz-container">
-            <div class="quiz-question">
-                <p>1. What is the chemical symbol for water?</p>
-                <label><input type="radio" name="question1" value="H2O"> H<sub>2</sub>O</label><br>
-                <label><input type="radio" name="question1" value="O2"> O<sub>2</sub></label><br>
-                <label><input type="radio" name="question1" value="CO2"> CO<sub>2</sub></label>
-            </div>
-            <div class="quiz-question">
-                <p>2. What is the pH level of pure water?</p>
-                <label><input type="radio" name="question2" value="7"> 7</label><br>
-                <label><input type="radio" name="question2" value="5"> 5</label><br>
-                <label><input type="radio" name="question2" value="9"> 9</label>
-            </div>
-            <button class="complete-survey-button" onclick="submitResponses()">Submit</button>
-        </div>
-    </div>
-
-    <!-- JavaScript for Navigation and Submission -->
-    <script>
-        function showPage(pageIndex) {
-            const sections = document.querySelectorAll('.container');
-            sections.forEach((section, index) => {
-                if (index === pageIndex) {
-                    section.classList.add('active');
-                } else {
-                    section.classList.remove('active');
-                }
-            });
-        }
-
-        function submitResponses() {
-            const responses = {
-                question1: document.querySelector('input[name="question1"]:checked')?.value,
-                question2: document.querySelector('input[name="question2"]:checked')?.value
-            };
-
-            fetch('submit_responses.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(responses)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    alert(data.message);
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                alert('An error occurred: ' + error.message);
-            });
-        }
-    </script>
-</body>
-</html>
+            <div class="quiz-ques
