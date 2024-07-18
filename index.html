@@ -34,12 +34,17 @@
             margin: 0;
             text-align: left;
         }
-        button {
+        .nav-buttons {
             margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+        }
+        .nav-buttons button {
             color: tomato;
             width: 200px;
             height: 50px;
-            align-self: center;
             font-size: 16px;
             cursor: pointer;
         }
@@ -86,7 +91,9 @@
                 </video>
             </figure>
         </div>
-        <button onclick="showPage(1)">Next</button>
+        <div class="nav-buttons">
+            <button onclick="showPage(1)">Next</button>
+        </div>
     </div>
     
     <div id="video-section-2" class="container">
@@ -99,6 +106,14 @@
                 </video>
             </figure>
         </div>
+        <div class="nav-buttons">
+            <button onclick="showPage(0)">Previous</button>
+            <button onclick="showPage(2)">Next</button>
+        </div>
+    </div>
+    
+    <div id="quiz-section" class="container">
+        <h1>Quiz</h1>
         <div class="quiz-container">
             <div class="quiz-question">
                 <p>1. What is the chemical symbol for water?</p>
@@ -114,11 +129,16 @@
             </div>
             <button class="complete-survey-button" onclick="submitResponses()">Submit</button>
         </div>
+        <div class="nav-buttons">
+            <button onclick="showPage(1)">Previous</button>
+            <button onclick="location.href='https://www.questionpro.com/'">Go to QuestionPro</button>
+        </div>
     </div>
 
     <!-- JavaScript for Navigation and Submission -->
     <script>
         function showPage(pageIndex) {
+            console.log("Button clicked, showing page:", pageIndex);
             const sections = document.querySelectorAll('.container');
             sections.forEach((section, index) => {
                 if (index === pageIndex) {
