@@ -149,7 +149,19 @@
             });
         }
 
-        function submitResponses() {
+        function showPage(pageIndex) {
+        console.log("Button clicked, showing page:", pageIndex);
+        const sections = document.querySelectorAll('.container');
+        sections.forEach((section, index) => {
+            if (index === pageIndex) {
+                section.classList.add('active');
+            } else {
+                section.classList.remove('active');
+            }
+        });
+    }
+
+    function submitResponses() {
         const responses = {
             question1: document.querySelector('input[name="question1"]:checked')?.value,
             question2: document.querySelector('input[name="question2"]:checked')?.value
