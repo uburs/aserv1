@@ -138,6 +138,7 @@
     <!-- JavaScript for Navigation and Submission -->
     <script>
         function showPage(pageIndex) {
+            console.log("Button clicked, showing page:", pageIndex);
             const sections = document.querySelectorAll('.container');
             sections.forEach((section, index) => {
                 if (index === pageIndex) {
