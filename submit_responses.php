@@ -3,7 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $responses = json_decode(file_get_contents('php://input'), true);
 
     // Google Sheets URL (replace with your actual Google Sheets Web App URL)
-    $googleSheetsUrl = 'https://script.google.com/macros/s/AKfycbxcn5hXn_4XsZFSaeDhZ3Q-zqhht63LiriA5eT8EB9EYilSfpWjqxE62SYX6thiGC1p0A/exec';
+    $googleSheetsUrl = 'https://script.google.com/macros/s/AKfycbzIam9vxKfeHFsZa6bKAtlutKCtsRN8PMTNG_C8AXbBVfB9ibK7S2isbYst3TQqtI1Ayg/exec';
 
     // Prepare the data to be sent to Google Sheets
     $postData = json_encode($responses);
@@ -42,4 +42,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo json_encode(['status' => 'error', 'message' => 'Invalid request method.']);
 }
 ?>
-
