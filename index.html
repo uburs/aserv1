@@ -79,10 +79,12 @@
     </style>
 </head>
 <body>
-    <h1>Chemistry Quiz</h1>
     
     <div id="video-section-1" class="container active">
         <h1>Chemistry Lecture Video</h1>
+        <p>This recorded video is just an example demonstrating a real-time lecture in a Chemistry class. </p>
+        <p>The idea is to demonstrate how some students need an accessibility support to be able to participate in the class.</p>
+
         <div>
             <figure>
                 <video width="900" height="800" controls>
@@ -91,13 +93,14 @@
                 </video>
             </figure>
         </div>
+        <h2>You will access the real-time caption for this video lecture in the next page.</h2>
         <div class="nav-buttons">
             <button onclick="showPage(1)">Next</button>
         </div>
     </div>
     
     <div id="video-section-2" class="container">
-        <h1>ASR Captions of the Lecture Video Above</h1>
+        <h1>ASR Captions of the Lecture Video Shown in Previous Page</h1>
         <div>
             <figure>
                 <video width="900" height="800" controls>
@@ -112,20 +115,24 @@
         </div>
     </div>
     
-    <div id="quiz-section" class="container">
+    < id="quiz-section" class="container">
         <h1>Quiz</h1>
+        <p>The following quiz is based on the content covered in the lecture video on page 1 and the corresponding caption on this page.</p>
+        <p>The purpose of the quiz is to determine comprehension.</p>
         <div class="quiz-container">
             <div class="quiz-question">
-                <p>1. What is the chemical symbol for water?</p>
-                <label><input type="radio" name="question1" value="H2O"> H<sub>2</sub>O</label><br>
-                <label><input type="radio" name="question1" value="O2"> O<sub>2</sub></label><br>
-                <label><input type="radio" name="question1" value="CO2"> CO<sub>2</sub></label>
+                <p>1. Matter is composed of a tiny unit called?</p>
+                <label><input type="radio" name="question1" value="Particle"> Particle</label><br>
+                <label><input type="radio" name="question1" value="Electron"> Electron</label><br>
+                <label><input type="radio" name="question1" value="Atom"> Atom</label><br>
+                <label><input type="radio" name="question1" value="Proton"> Proton</label>
             </div>
             <div class="quiz-question">
-                <p>2. What is the pH level of pure water?</p>
-                <label><input type="radio" name="question2" value="7"> 7</label><br>
-                <label><input type="radio" name="question2" value="5"> 5</label><br>
-                <label><input type="radio" name="question2" value="9"> 9</label>
+                <p>2. Which of the following is a component of an atom??</p>
+                <label><input type="radio" name="question2" value="water"> water</label><br>
+                <label><input type="radio" name="question2" value="electricity"> electricity</label><br>
+                <label><input type="radio" name="question2" value="proton"> proton</label><br>
+                <label><input type="radio" name="question2" value="neoro"> neuro</label>
             </div>
             <button class="complete-survey-button" onclick="submitResponses()">Submit</button>
         </div>
